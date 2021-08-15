@@ -101,6 +101,16 @@
     margin: 0 auto;
   }
 
+  .fixed-position{
+    display: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    opacity: 3.5;
+  }
+
   .hide{
       display: none;
   }

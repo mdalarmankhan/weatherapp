@@ -2,6 +2,12 @@ import API from './api.js';
 
 import NoData from './noData.js';
 
+import Loading from './loading.js';
+
+import WeatherComponent from './weatherComponent.js';
+
+
+
 class WeatherApp{
     rootElement;
     static render(data, systemUsed) {
@@ -9,6 +15,8 @@ class WeatherApp{
             NoData.render(this.rootElement);
         }
         else {
+            WeatherComponent.render(this.rootElement, data, systemUsed)
+
             console.log(data);
             // this.rootElement
         }
@@ -20,10 +28,11 @@ class WeatherApp{
 
             const defaultCity = 'Sydney';
             const systemUsed = 'metric';
-
+            Loading.render(this.rootElement);
             API.getWeatherData(defaultCity)
                 .then(data => {
-                    this.render(null, systemUsed)
+                    Loading.remove(this.rootElement);
+                    this.render(data, systemUsed)
                 })
         }
         catch (error) {
